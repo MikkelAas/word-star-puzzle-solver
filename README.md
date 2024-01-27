@@ -4,7 +4,7 @@ A CLI tool for solving VGs word star puzzle.
 
 ## Install ⬇️
 
-### With Cargo
+### Option 1: With Cargo
 
 Make sure you have rust installed on your pc. Check how to install rust [here](https://www.rust-lang.org/tools/install).
 
@@ -14,7 +14,7 @@ When you have successfuly installed rust you can install the tool by running thi
 cargo install word-star-puzzle-solver
 ```
 
-### From Release
+### Option 2: From Release
 
 Install the binary file from releases.
 
