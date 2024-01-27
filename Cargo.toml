@@ -1,7 +1,11 @@
 [package]
 name = "word-star-puzzle-solver"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
+authors = ["Mikkel Aas <aa.mikkel2902@gmail.com>"]
+description = "A CLI tool for solving VGs word star puzzle"
+license = "MIT"
+repository = "https://github.com/MikkelAas/word-star-puzzle-solver"
 
 [profile.release]
 opt-level = 3
