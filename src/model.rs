@@ -9,12 +9,12 @@ impl PuzzleInput {
             panic!("List length of allowed characters must be exactly 7")
         }
 
-        let required_character_uppercase = required_character.to_ascii_uppercase();
+        let required_character_uppercase = required_character.to_ascii_lowercase();
 
         let allowed_characters_uppercase: Vec<char> = allowed_characters
             .clone()
             .into_iter()
-            .map(|char| char.to_ascii_uppercase())
+            .map(|char| char.to_ascii_lowercase())
             .collect();
 
         Self {
