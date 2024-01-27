@@ -2,6 +2,8 @@ use std::collections::HashSet;
 
 use crate::model::PuzzleInput;
 
+const MINIMUM_WORD_LENGTH: usize = 3;
+
 pub fn solve_word_star_puzzle(puzzle_input: PuzzleInput) -> HashSet<String> {
     let words = read_file_to_lines();
 
@@ -16,18 +18,18 @@ fn read_file_to_lines() -> Vec<String> {
         .collect()
 }
 
-fn filter_puzzle_input(lines: Vec<String>, puzzle_input: PuzzleInput) -> HashSet<String> {
-    let filtered_lines: Vec<String> = lines
+fn filter_puzzle_input(words: Vec<String>, puzzle_input: PuzzleInput) -> HashSet<String> {
+    let filtered_words: Vec<String> = words
         .into_iter()
-        .filter(|line| line.len() >= 3)
-        .filter(|line| line.contains(puzzle_input.required_character))
-        .filter(|line| {
-            line.chars()
+        .filter(|word| word.len() >= MINIMUM_WORD_LENGTH)
+        .filter(|word| word.contains(puzzle_input.required_character))
+        .filter(|word| {
+            word.chars()
                 .all(|char| puzzle_input.allowed_characters.contains(&char))
         })
         .collect();
 
-    HashSet::from_iter(filtered_lines)
+    HashSet::from_iter(filtered_words)
 }
 
 #[cfg(test)]
