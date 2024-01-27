@@ -21,7 +21,7 @@ fn read_file_to_lines() -> Vec<String> {
 fn filter_puzzle_input(words: Vec<String>, puzzle_input: PuzzleInput) -> HashSet<String> {
     let filtered_words: Vec<String> = words
         .into_iter()
-        .filter(|word| word.len() >= MINIMUM_WORD_LENGTH)
+        .filter(|word| word.len() > MINIMUM_WORD_LENGTH)
         .filter(|word| word.contains(puzzle_input.required_character))
         .filter(|word| {
             word.chars()
