@@ -32,7 +32,7 @@ On unix:
 ./word-star-solver --version
 ```
 
-## How-to-use
+## How-to-use 🔮
 
 Use `--help` for instructions on how to use the tool:
 
@@ -42,9 +42,13 @@ word-star-puzzle-solver --help
 
 ### Example
 
+![Example word star puzzle from VG](docs/images/puzzle.png)
+
 ```sh
 word-star-puzzle-solver -r P -a B L Å Æ O E P
 ```
+
+**Note that P is present in both the required character argument and the allowed characters argument.**
 
 Result:
 
