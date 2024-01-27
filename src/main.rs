@@ -1,10 +1,9 @@
+mod model;
+
 use clap::Parser;
 use std::collections::HashSet;
 
-struct PuzzleInput {
-    must_include_letter: char,
-    allowed_characters: Vec<char>,
-}
+use crate::model::PuzzleInput;
 
 /// VGs word star puzzle solver
 #[derive(Parser, Debug)]
@@ -12,7 +11,7 @@ struct PuzzleInput {
 struct Args {
     /// The required letter
     #[arg(short, long)]
-    required_letter: char,
+    required_character: char,
 
     /// A list of allowed letters
     #[arg(short, long, num_args = 7, value_delimiter = ' ')]
@@ -22,14 +21,11 @@ struct Args {
 fn main() {
     let args = Args::parse();
 
-    let puzzle_input = PuzzleInput {
-        must_include_letter: args.required_letter,
-        allowed_characters: args.allowed_characters,
-    };
+    let puzzle_input = PuzzleInput::new(args.required_character, args.allowed_characters);
 
-    let lines = read_file_to_lines();
+    let words = read_file_to_lines();
 
-    let result = filter_puzzle_input(lines, puzzle_input);
+    let result = filter_puzzle_input(words, puzzle_input);
 
     println!("{:?}", result)
 }
@@ -48,7 +44,7 @@ fn filter_puzzle_input(lines: Vec<String>, puzzle_input: PuzzleInput) -> HashSet
         .filter(|line| line.len() > 3)
         .filter(|line| {
             line.to_ascii_uppercase()
-                .contains(puzzle_input.must_include_letter)
+                .contains(puzzle_input.required_character)
         })
         .filter(|line| {
             line.chars().all(|char| {
@@ -76,7 +72,7 @@ mod tests {
         ];
 
         let puzzle_input = PuzzleInput {
-            must_include_letter: 'U',
+            required_character: 'U',
             allowed_characters: vec!['T', 'U', 'R'],
         };
 
