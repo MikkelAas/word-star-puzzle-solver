@@ -14,7 +14,7 @@ fn read_file_to_lines() -> Vec<String> {
     include_str!("words.csv")
         .to_owned()
         .lines()
-        .map(|line| String::from(line.to_ascii_uppercase()))
+        .map(String::from)
         .collect()
 }
 
@@ -27,6 +27,7 @@ fn filter_puzzle_input(words: Vec<String>, puzzle_input: PuzzleInput) -> HashSet
             word.chars()
                 .all(|char| puzzle_input.allowed_characters.contains(&char))
         })
+        .map(|char| char.to_uppercase())
         .collect();
 
     HashSet::from_iter(filtered_words)
