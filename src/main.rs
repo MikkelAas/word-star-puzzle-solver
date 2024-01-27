@@ -5,15 +5,15 @@ use clap::Parser;
 
 use crate::{model::PuzzleInput, puzzle_solver::solve_word_star_puzzle};
 
-/// VGs word star puzzle solver
+/// VG word star puzzle solver
 #[derive(Parser, Debug)]
 #[command(author, version, about, long_about = None)]
 struct Args {
-    /// The required letter
+    /// The required character
     #[arg(short, long)]
     required_character: char,
 
-    /// A list of allowed letters
+    /// A list of allowed characters seperated by space
     #[arg(short, long, num_args = 7, value_delimiter = ' ')]
     allowed_characters: Vec<char>,
 }
