@@ -19,7 +19,7 @@ fn read_file_to_lines() -> Vec<String> {
 fn filter_puzzle_input(lines: Vec<String>, puzzle_input: PuzzleInput) -> HashSet<String> {
     let filtered_lines: Vec<String> = lines
         .into_iter()
-        .filter(|line| line.len() > 3)
+        .filter(|line| line.len() >= 3)
         .filter(|line| line.contains(puzzle_input.required_character))
         .filter(|line| {
             line.chars()
