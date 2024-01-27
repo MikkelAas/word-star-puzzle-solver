@@ -1,3 +1,4 @@
+use clap::Parser;
 use std::collections::HashSet;
 
 struct PuzzleInput {
@@ -5,10 +6,25 @@ struct PuzzleInput {
     allowed_characters: Vec<char>,
 }
 
+/// VGs word star puzzle solver
+#[derive(Parser, Debug)]
+#[command(author, version, about, long_about = None)]
+struct Args {
+    /// The required letter
+    #[arg(short, long)]
+    required_letter: char,
+
+    /// A list of allowed letters
+    #[arg(short, long, num_args = 7, value_delimiter = ' ')]
+    allowed_characters: Vec<char>,
+}
+
 fn main() {
+    let args = Args::parse();
+
     let puzzle_input = PuzzleInput {
-        must_include_letter: 'P',
-        allowed_characters: vec!['B', 'L', 'Å', 'Æ', 'O', 'E', 'P'],
+        must_include_letter: args.required_letter,
+        allowed_characters: args.allowed_characters,
     };
 
     let lines = read_file_to_lines();
